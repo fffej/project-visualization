@@ -21,6 +21,8 @@ executable portfolio-visualization
   build-depends:       base >=4.7 && <4.8,
                        diagrams-lib >=1.2.0.3,
                        diagrams-svg >=1.1.0.1,
-                       cassava >=0.4.1.0
+                       cassava >=0.4.1.0,
+                       vector >=0.10.9.1,
+                       bytestring >=0.10.0.2
   hs-source-dirs:      src/
   default-language:    Haskell2010
