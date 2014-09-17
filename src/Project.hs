@@ -17,7 +17,7 @@ data Outcome = Execute
              | Improvement
              | Learn
              | Sustain
-               deriving (Read,Show,Eq)
+               deriving (Ord,Show,Eq)
 
 data Project = Project
                {
@@ -36,7 +36,7 @@ instance FromNamedRecord Project where
 
 instance FromField Outcome where
   parseField s
-    | s == "Execute" = pure Execute
+    | s == "Develop" = pure Execute
     | s == "Improvement" = pure Improvement
     | s == "Learn" = pure Learn
     | s == "Sustain" = pure Sustain
