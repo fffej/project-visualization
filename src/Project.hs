@@ -16,5 +16,6 @@ data Project = Project
                  name :: String
                , outcome :: Outcome
                , cost :: Int
+               , duration :: Int
                } deriving (Show)
                  
