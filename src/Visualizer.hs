@@ -9,6 +9,7 @@ import Project
 verticalSpacing :: Double
 verticalSpacing = 5
 
+diagram :: [Project] -> Diagram B R2
 diagram projects = vcat $ map (alignL . visualize) projects
 
 visualize :: Project -> Diagram B R2
