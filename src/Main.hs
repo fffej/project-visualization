@@ -22,15 +22,15 @@ mkProject i n dept o t d c = Project i n dept divGoalA "Win" o t d c
 
 projects :: [Project]
 projects = [
-    mkProject "AG1" "Complete an APPLE framework" "AG" Execute [] [] Medium
+    mkProject "AG1" "Complete an APPLE framework" "AG" Execute [] [] High
   , mkProject "AG2" "Complete the BANANA implementation" "AG" Improve [] [] Medium
-  , mkProject "AG3" "Develop campaigns for X & Y" "AG" Learn [] [] Medium
-  , mkProject "AG4" "Develop a campaign for A & B" "AG" Sustain [] [] Medium
-  , mkProject "AG5" "Develop a campaign for Mango" "AG" Execute [] [] Medium
-  , mkProject "AG6" "Develop brand strategy" "AG" Improve [] ["AG3","AG4"] Medium
+  , mkProject "AG3" "Develop campaigns for X & Y" "AG" Learn [] [] Low
+  , mkProject "AG4" "Develop a campaign for A & B" "AG" Sustain [] ["AG1"] Medium
+  , mkProject "AG5" "Develop a campaign for Mango" "AG" Execute [] ["AG1"] Medium
+  , mkProject "AG6" "Develop brand strategy" "AG" Improve [] ["AG3"] Medium
   ]
 
 main :: IO ()
-main = mainWith $ diagram (sortBy (comparing outcome) projects)
+main = mainWith $ diagram (sortBy (comparing cost) projects)
 
 

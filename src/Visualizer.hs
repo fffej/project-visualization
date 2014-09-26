@@ -15,18 +15,23 @@ now = filter (null . dependency)
 next :: [Project] -> [Project]
 next = filter (not . null . dependency)
 
-
 diagram :: [Project] -> Diagram B R2
-diagram projects = vcat $ map (visualize projects) (now projects)
+diagram projects = header === strutY verticalSpacing === (vcat $ map (visualize projects) (now projects))
+
+header :: Diagram B R2
+header = (text "Now" <> (rect 75 10 # fc gray)) ||| 
+         strutX verticalSpacing ||| 
+         (text "Next" <> (rect 75 10 # fc gray))
 
 visualize :: [Project] -> Project -> Diagram B R2
-visualize all p = (text d) <> paddedRect
+visualize ps p = ((text d) <> paddedRect) ||| (strutX verticalSpacing) ||| vcat (map (visualize ps) dependentProjects) === strutY verticalSpacing 
   where
-    paddedRect = rect w h # fc c === strutY verticalSpacing
+    paddedRect = (rect w h # fc c) 
     w = fromIntegral $ 75
     h = heightFrom $ cost p 
     c = colorFrom $ outcome p
     d = name p
+    dependentProjects = filter (\x -> projectId p `elem` dependency x) ps
 
 colorFrom :: (Ord a, Floating a) => Outcome -> Colour a
 colorFrom Improve     = blue
