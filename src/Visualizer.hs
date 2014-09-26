@@ -15,14 +15,16 @@ now = filter (null . dependency)
 next :: [Project] -> [Project]
 next = filter (not . null . dependency)
 
+
 diagram :: [Project] -> Diagram B R2
-diagram projects = vcat $ map (alignL . visualize) projects
+diagram projects = vcat $ map visualize projects
 
 visualize :: Project -> Diagram B R2
-visualize p = (text d) <> ((rect w h # fc c) === strutY verticalSpacing)
+visualize p = (text d) <> paddedRect
   where
-    w = fromIntegral $ 10
-    h = fromIntegral $ 20
+    paddedRect = rect w h # fc c === strutY verticalSpacing
+    w = fromIntegral $ 75
+    h = heightFrom $ cost p 
     c = colorFrom $ outcome p
     d = name p
 
@@ -32,3 +34,7 @@ colorFrom Learn       = red
 colorFrom Sustain     = yellow
 colorFrom Execute     = green
 
+heightFrom :: (Floating a) => Cost -> a
+heightFrom High   = 30
+heightFrom Medium = 20
+heightFrom Low    = 10

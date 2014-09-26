@@ -17,17 +17,17 @@ import Data.Ord
 divGoalA :: String
 divGoalA = "Divisional Goal1"
 
-mkProject :: ProjectId -> String -> Outcome -> [String] -> [String] -> Cost -> Project
-mkProject i dept o t d c = Project i "Generic Goal" dept divGoalA "Win" o t d c
+mkProject :: ProjectId -> String -> String -> Outcome -> [String] -> [String] -> Cost -> Project
+mkProject i n dept o t d c = Project i n dept divGoalA "Win" o t d c
 
 projects :: [Project]
 projects = [
-    mkProject "AG1" "AG" Execute [] [] Medium
-  , mkProject "AG2" "AG" Improve [] [] Medium
-  , mkProject "AG3" "AG" Learn [] [] Medium
-  , mkProject "AG4" "AG" Sustain [] [] Medium
-  , mkProject "AG5" "AG" Execute [] [] Medium
-  , mkProject "AG6" "AG" Improve [] ["AG3","AG4"] Medium
+    mkProject "AG1" "Complete an APPLE framework" "AG" Execute [] [] Medium
+  , mkProject "AG2" "Complete the BANANA implementation" "AG" Improve [] [] Medium
+  , mkProject "AG3" "Develop campaigns for X & Y" "AG" Learn [] [] Medium
+  , mkProject "AG4" "Develop a campaign for A & B" "AG" Sustain [] [] Medium
+  , mkProject "AG5" "Develop a campaign for Mango" "AG" Execute [] [] Medium
+  , mkProject "AG6" "Develop brand strategy" "AG" Improve [] ["AG3","AG4"] Medium
   ]
 
 main :: IO ()
