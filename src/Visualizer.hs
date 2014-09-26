@@ -17,10 +17,10 @@ next = filter (not . null . dependency)
 
 
 diagram :: [Project] -> Diagram B R2
-diagram projects = vcat $ map visualize projects
+diagram projects = vcat $ map (visualize projects) projects
 
-visualize :: Project -> Diagram B R2
-visualize p = (text d) <> paddedRect
+visualize :: [Project] -> Project -> Diagram B R2
+visualize all p = (text d) <> paddedRect
   where
     paddedRect = rect w h # fc c === strutY verticalSpacing
     w = fromIntegral $ 75
