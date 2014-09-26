@@ -17,7 +17,7 @@ next :: [Project] -> [Project]
 next = filter (not . null . dependency)
 
 text' :: String -> Diagram B R2
-text' t = stroke (textSVG' $ TextOpts t lin INSIDE_H HADV False 14 14) 
+text' t = stroke (textSVG' $ TextOpts t lin INSIDE_H HADV False 20 20) 
     # fillRule EvenOdd 
     # fc black
     # lw veryThin
