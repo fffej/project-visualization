@@ -17,7 +17,7 @@ next = filter (not . null . dependency)
 
 
 diagram :: [Project] -> Diagram B R2
-diagram projects = vcat $ map (visualize projects) projects
+diagram projects = vcat $ map (visualize projects) (now projects)
 
 visualize :: [Project] -> Project -> Diagram B R2
 visualize all p = (text d) <> paddedRect
