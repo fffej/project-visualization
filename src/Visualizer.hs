@@ -2,6 +2,7 @@ module Visualizer where
 
 import Diagrams.Prelude hiding (duration)
 import Diagrams.Backend.SVG.CmdLine
+import Graphics.SVGFonts.ReadFont (textSVG)
 
 import Project
 
